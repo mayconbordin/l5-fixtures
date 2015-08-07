@@ -8,6 +8,9 @@ use League\Csv\Reader;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use Mayconbordin\L5Fixtures\Exceptions\DirectoryNotFoundException;
+use Mayconbordin\L5Fixtures\Exceptions\NotDirectoryException;
+use Mayconbordin\L5Fixtures\Exceptions\UnsupportedFormatException;
 
 class Fixtures
 {
@@ -40,12 +43,12 @@ class Fixtures
             $location = array_get($this->config, 'location');
         }
 
-        if (!is_dir($location)) {
-            throw new \Exception("Fixtures location '$location' is not a directory.");
+        if (!is_dir($location) || !is_readable($location)) {
+            throw new NotDirectoryException($location);
         }
 
         if (!file_exists($location)) {
-            throw new \Exception("Fixtures location '$location' does not exists.");
+            throw new DirectoryNotFoundException($location);
         }
 
         $this->loadFixturesMetadata($location);
@@ -63,7 +66,7 @@ class Fixtures
 
     protected function unloadFixtures($allowed = null)
     {
-        $fixtures = is_null($allowed) ? $this->getFixtures() : array_intersect_key($this->getFixtures(), array_flip($allowed));
+        $fixtures = $this->getFixtures($allowed);
 
         Model::unguard();
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -78,7 +81,7 @@ class Fixtures
 
     protected function loadFixtures($allowed = null)
     {
-        $fixtures = is_null($allowed) ? $this->getFixtures() : array_intersect_key($this->getFixtures(), array_flip($allowed));
+        $fixtures = $this->getFixtures($allowed);
 
         Model::unguard();
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -94,16 +97,23 @@ class Fixtures
     protected function loadFixture($fixture)
     {
         $rows = $this->readFixture($fixture);
+
         DB::table($fixture->table)->insert($rows);
     }
 
-    public function getFixtures()
+    public function getFixtures($allowed = null)
     {
         if ($this->fixtures == null) {
             $this->setUp();
         }
 
-        return $this->fixtures;
+        if (is_null($allowed)) {
+            $fixtures = $this->fixtures;
+        } else {
+            $fixtures = array_intersect_key($this->fixtures, array_flip($allowed));
+        }
+
+        return $fixtures;
     }
 
     protected function readFixture($fixture)
@@ -123,13 +133,12 @@ class Fixtures
                 return $csv->fetchAssoc();
 
             default:
-                throw new \Exception("Format '{$fixture->format}' is not supported.");
+                throw new UnsupportedFormatException($fixture->format);
         }
     }
 
     protected function loadFixturesMetadata($dir) {
-        $adapter    = new Local($dir);
-        $this->filesystem = new Filesystem($adapter);
+        $this->filesystem = new Filesystem(new Local($dir));
         $this->filesystem->addPlugin(new ListFiles());
 
         $files = $this->filesystem->listFiles();

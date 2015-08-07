@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'location' => realpath(app_path()) . '/tests/fixtures',
+    'location' => realpath(base_path()) . '/tests/fixtures',
 ];
