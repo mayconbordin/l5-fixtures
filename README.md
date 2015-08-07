@@ -55,5 +55,12 @@ And to destroy the records in the database run
 Fixtures::down();
 ```
 
-The `down` method can also receive an array with the name of fixtures that will be destroyed. Currently all records in
-the database tables are destroyed.
+The `down` method can also receive an array with the name of fixtures that will be destroyed. Currently all records
+in the database tables are destroyed.
+
+If you haven't published the configuration file or you want to load fixtures from another location, you only need to execute the following code before applying the fixtures:
+
+```php
+Fixtures::setUp('/path/to/fixtures');
+```
+
