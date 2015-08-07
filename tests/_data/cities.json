@@ -1,0 +1,502 @@
+[
+  {
+    "name": "Owen Sound",
+    "region": "ON",
+    "country": "Sierra Leone"
+  },
+  {
+    "name": "Victor Harbor",
+    "region": "SA",
+    "country": "Dominica"
+  },
+  {
+    "name": "San Francisco",
+    "region": "Heredia",
+    "country": "Western Sahara"
+  },
+  {
+    "name": "Saint-Louis",
+    "region": "Alsace",
+    "country": "Tunisia"
+  },
+  {
+    "name": "Carmarthen",
+    "region": "CM",
+    "country": "Sweden"
+  },
+  {
+    "name": "Bulandshahr",
+    "region": "Uttar Pradesh",
+    "country": "Åland Islands"
+  },
+  {
+    "name": "Alcorcón",
+    "region": "Madrid",
+    "country": "Antigua and Barbuda"
+  },
+  {
+    "name": "Orangeville",
+    "region": "Ontario",
+    "country": "Uruguay"
+  },
+  {
+    "name": "Pulle",
+    "region": "AN",
+    "country": "Svalbard and Jan Mayen Islands"
+  },
+  {
+    "name": "Orange",
+    "region": "NSW",
+    "country": "Kyrgyzstan"
+  },
+  {
+    "name": "Maranello",
+    "region": "ERM",
+    "country": "Colombia"
+  },
+  {
+    "name": "Oderzo",
+    "region": "VEN",
+    "country": "Senegal"
+  },
+  {
+    "name": "Cork",
+    "region": "M",
+    "country": "Israel"
+  },
+  {
+    "name": "Dunbar",
+    "region": "East Lothian",
+    "country": "Macao"
+  },
+  {
+    "name": "Breda",
+    "region": "Noord Brabant",
+    "country": "Saint Martin"
+  },
+  {
+    "name": "Katsina",
+    "region": "Katsina",
+    "country": "Macao"
+  },
+  {
+    "name": "Barcelona",
+    "region": "CA",
+    "country": "Argentina"
+  },
+  {
+    "name": "Sant'Onofrio",
+    "region": "CAL",
+    "country": "Tuvalu"
+  },
+  {
+    "name": "Minna",
+    "region": "Niger",
+    "country": "British Indian Ocean Territory"
+  },
+  {
+    "name": "Gaziantep",
+    "region": "Gaziantep",
+    "country": "Guyana"
+  },
+  {
+    "name": "Montpelier",
+    "region": "VT",
+    "country": "Norfolk Island"
+  },
+  {
+    "name": "Belmont",
+    "region": "Western Australia",
+    "country": "Swaziland"
+  },
+  {
+    "name": "San José de Alajuela",
+    "region": "Alajuela",
+    "country": "Armenia"
+  },
+  {
+    "name": "Fort St. John",
+    "region": "British Columbia",
+    "country": "Namibia"
+  },
+  {
+    "name": "Berlin",
+    "region": "BE",
+    "country": "Brazil"
+  },
+  {
+    "name": "Rockford",
+    "region": "IL",
+    "country": "Marshall Islands"
+  },
+  {
+    "name": "North Bay",
+    "region": "ON",
+    "country": "Togo"
+  },
+  {
+    "name": "Saint-L�onard",
+    "region": "Quebec",
+    "country": "French Polynesia"
+  },
+  {
+    "name": "Wanaka",
+    "region": "South Island",
+    "country": "French Southern Territories"
+  },
+  {
+    "name": "New Bombay",
+    "region": "MH",
+    "country": "Chad"
+  },
+  {
+    "name": "Delhi",
+    "region": "Delhi",
+    "country": "Nigeria"
+  },
+  {
+    "name": "San Pablo",
+    "region": "H",
+    "country": "Hong Kong"
+  },
+  {
+    "name": "Galway",
+    "region": "Connacht",
+    "country": "Vanuatu"
+  },
+  {
+    "name": "Sagar",
+    "region": "Madhya Pradesh",
+    "country": "Anguilla"
+  },
+  {
+    "name": "Picton",
+    "region": "SI",
+    "country": "Saint Lucia"
+  },
+  {
+    "name": "Vigo",
+    "region": "Galicia",
+    "country": "Sudan"
+  },
+  {
+    "name": "Belfast",
+    "region": "U",
+    "country": "Kiribati"
+  },
+  {
+    "name": "Havr�",
+    "region": "HE",
+    "country": "Svalbard and Jan Mayen Islands"
+  },
+  {
+    "name": "Oldenzaal",
+    "region": "Ov",
+    "country": "Reunion"
+  },
+  {
+    "name": "Kettering",
+    "region": "Northamptonshire",
+    "country": "Albania"
+  },
+  {
+    "name": "Pontevedra",
+    "region": "GA",
+    "country": "China"
+  },
+  {
+    "name": "Ribeirão Preto",
+    "region": "SP",
+    "country": "Senegal"
+  },
+  {
+    "name": "San Antonio",
+    "region": "Texas",
+    "country": "French Polynesia"
+  },
+  {
+    "name": "Lafayette",
+    "region": "Louisiana",
+    "country": "New Caledonia"
+  },
+  {
+    "name": "Caxias do Sul",
+    "region": "RS",
+    "country": "Liberia"
+  },
+  {
+    "name": "Albi",
+    "region": "MI",
+    "country": "France"
+  },
+  {
+    "name": "Manukau",
+    "region": "North Island",
+    "country": "Armenia"
+  },
+  {
+    "name": "Heule",
+    "region": "WV",
+    "country": "Maldives"
+  },
+  {
+    "name": "Reus",
+    "region": "CA",
+    "country": "Aruba"
+  },
+  {
+    "name": "Hamburg",
+    "region": "Hamburg",
+    "country": "Cyprus"
+  },
+  {
+    "name": "Bendigo",
+    "region": "VIC",
+    "country": "Western Sahara"
+  },
+  {
+    "name": "Alajuela",
+    "region": "Alajuela",
+    "country": "Pakistan"
+  },
+  {
+    "name": "Mildura",
+    "region": "VIC",
+    "country": "Marshall Islands"
+  },
+  {
+    "name": "Segovia",
+    "region": "Castilla y León",
+    "country": "Reunion"
+  },
+  {
+    "name": "Dunstable",
+    "region": "Bedfordshire",
+    "country": "South Africa"
+  },
+  {
+    "name": "Maringá",
+    "region": "Paraná",
+    "country": "Oman"
+  },
+  {
+    "name": "Indianapolis",
+    "region": "Indiana",
+    "country": "Heard Island and Mcdonald Islands"
+  },
+  {
+    "name": "Fort Wayne",
+    "region": "IN",
+    "country": "Senegal"
+  },
+  {
+    "name": "Timaru",
+    "region": "South Island",
+    "country": "Nauru"
+  },
+  {
+    "name": "Uttarpara-Kotrung",
+    "region": "West Bengal",
+    "country": "Czech Republic"
+  },
+  {
+    "name": "Sokoto",
+    "region": "Sokoto",
+    "country": "Poland"
+  },
+  {
+    "name": "Wambeek",
+    "region": "Vlaams-Brabant",
+    "country": "Northern Mariana Islands"
+  },
+  {
+    "name": "Drancy",
+    "region": "IL",
+    "country": "Croatia"
+  },
+  {
+    "name": "Franeker",
+    "region": "Friesland",
+    "country": "Dominica"
+  },
+  {
+    "name": "Berlin",
+    "region": "Berlin",
+    "country": "Colombia"
+  },
+  {
+    "name": "Lochranza",
+    "region": "BU",
+    "country": "Singapore"
+  },
+  {
+    "name": "North Cowichan",
+    "region": "British Columbia",
+    "country": "Viet Nam"
+  },
+  {
+    "name": "Provost",
+    "region": "AB",
+    "country": "New Zealand"
+  },
+  {
+    "name": "Gavirate",
+    "region": "LOM",
+    "country": "Martinique"
+  },
+  {
+    "name": "Karacabey",
+    "region": "Bur",
+    "country": "Bulgaria"
+  },
+  {
+    "name": "Chesapeake",
+    "region": "VA",
+    "country": "Monaco"
+  },
+  {
+    "name": "Itapipoca",
+    "region": "Ceará",
+    "country": "Burundi"
+  },
+  {
+    "name": "Berlin",
+    "region": "BE",
+    "country": "Papua New Guinea"
+  },
+  {
+    "name": "Kaduna",
+    "region": "Kaduna",
+    "country": "French Guiana"
+  },
+  {
+    "name": "Springfield",
+    "region": "Missouri",
+    "country": "Bahamas"
+  },
+  {
+    "name": "Palmerston North",
+    "region": "North Island",
+    "country": "Georgia"
+  },
+  {
+    "name": "Colorado Springs",
+    "region": "CO",
+    "country": "Denmark"
+  },
+  {
+    "name": "Elx",
+    "region": "CV",
+    "country": "Seychelles"
+  },
+  {
+    "name": "Guardia Perticara",
+    "region": "BAS",
+    "country": "Saint Martin"
+  },
+  {
+    "name": "Cinco Esquinas",
+    "region": "San José",
+    "country": "Bouvet Island"
+  },
+  {
+    "name": "Valley East",
+    "region": "Ontario",
+    "country": "Somalia"
+  },
+  {
+    "name": "Sosnowiec",
+    "region": "Sląskie",
+    "country": "Yemen"
+  },
+  {
+    "name": "Chandler",
+    "region": "AZ",
+    "country": "Barbados"
+  },
+  {
+    "name": "Zaragoza",
+    "region": "Aragón",
+    "country": "French Southern Territories"
+  },
+  {
+    "name": "Jackson",
+    "region": "MS",
+    "country": "Senegal"
+  },
+  {
+    "name": "Vienna",
+    "region": "Vienna",
+    "country": "Botswana"
+  },
+  {
+    "name": "Dutse",
+    "region": "JI",
+    "country": "Virgin Islands, British"
+  },
+  {
+    "name": "Bünyan",
+    "region": "Kay",
+    "country": "Suriname"
+  },
+  {
+    "name": "Fraserburgh",
+    "region": "Aberdeenshire",
+    "country": "Cuba"
+  },
+  {
+    "name": "Lagos",
+    "region": "Lagos",
+    "country": "British Indian Ocean Territory"
+  },
+  {
+    "name": "Te Awamutu",
+    "region": "North Island",
+    "country": "Australia"
+  },
+  {
+    "name": "Diadema",
+    "region": "São Paulo",
+    "country": "Saint Barthélemy"
+  },
+  {
+    "name": "Tarsus",
+    "region": "Mersin",
+    "country": "Guam"
+  },
+  {
+    "name": "Dolcedo",
+    "region": "LIG",
+    "country": "Mongolia"
+  },
+  {
+    "name": "Molfetta",
+    "region": "PUG",
+    "country": "United States Minor Outlying Islands"
+  },
+  {
+    "name": "Dublin",
+    "region": "L",
+    "country": "Lebanon"
+  },
+  {
+    "name": "Colwood",
+    "region": "BC",
+    "country": "Angola"
+  },
+  {
+    "name": "Suwałki",
+    "region": "PD",
+    "country": "New Zealand"
+  },
+  {
+    "name": "Fayetteville",
+    "region": "AR",
+    "country": "Venezuela"
+  },
+  {
+    "name": "Lanark County",
+    "region": "ON",
+    "country": "Niger"
+  }
+]

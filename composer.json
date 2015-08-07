@@ -1,0 +1,31 @@
+{
+    "name": "mayconbordin/l5-fixtures",
+    "type": "library",
+    "description": "A fixtures package for Laravel 5",
+    "keywords": ["laravel", "laravel 5", "fixtures", "json", "yaml", "csv"],
+    "homepage": "https://github.com/mayconbordin/l5-fixtures",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maycon Viana Bordin",
+            "email": "mayconbordin@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.0.x|5.1.x",
+        "illuminate/database": "5.0.x|5.1.x",
+        "league/csv": "~7.1.2",
+        "league/flysystem": "~1.0.11"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "mockery/mockery": "~0.9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mayconbordin\\L5Fixtures\\": "src/Mayconbordin/L5Fixtures/"
+        }
+    },
+    "minimum-stability": "dev"
+}
