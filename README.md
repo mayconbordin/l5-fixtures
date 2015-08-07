@@ -1,5 +1,7 @@
 # l5-fixtures
 
+[![Build Status](https://travis-ci.org/mayconbordin/l5-fixtures.svg?branch=master)](https://travis-ci.org/mayconbordin/l5-fixtures)
+
 JSON and CSV fixtures package for Laravel 5.
 
 ## Installation
