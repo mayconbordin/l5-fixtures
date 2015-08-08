@@ -72,4 +72,4 @@ Fixtures::setUp('/path/to/fixtures');
 
 ## TODO
 
- - Add support for YAML and XML
+ - Add support for YAML, XML and PHP arrays.
