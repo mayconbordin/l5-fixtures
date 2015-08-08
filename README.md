@@ -4,6 +4,10 @@
 
 JSON and CSV fixtures package for Laravel 5.
 
+If you are seeding your database with fake data that can be easily generated, consider using the [Model Factories](http://laravel.com/docs/5.1/seeding#using-model-factories).
+
+But if you need to load data from a JSON or CSV file then this is your best choice.
+
 ## Installation
 
 In order to install Laravel 5 Fixtures, just add 
@@ -66,3 +70,6 @@ If you haven't published the configuration file or you want to load fixtures fro
 Fixtures::setUp('/path/to/fixtures');
 ```
 
+## TODO
+
+ - Add support for YAML, XML and PHP arrays.
