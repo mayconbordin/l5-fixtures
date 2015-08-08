@@ -14,12 +14,13 @@ class FixturesTest extends PHPUnit_Framework_TestCase
         DB::shouldReceive('statement')->with('SET FOREIGN_KEY_CHECKS=1;')->once();
         DB::shouldReceive('table')->with('cities')->once()->andReturn($queryBuilder);
         DB::shouldReceive('table')->with('users')->once()->andReturn($queryBuilder);
+        DB::shouldReceive('table')->with('countries')->once()->andReturn($queryBuilder);
 
         $fixtures = new \Mayconbordin\L5Fixtures\Fixtures(['location' => __DIR__ . '/_data']);
 
         $fixtures->up();
 
-        $this->assertEquals(2, sizeof($fixtures->getFixtures()));
+        $this->assertEquals(3, sizeof($fixtures->getFixtures()));
     }
 
     public function testUpOnlyUsers()
@@ -35,7 +36,7 @@ class FixturesTest extends PHPUnit_Framework_TestCase
 
         $fixtures->up(['users']);
 
-        $this->assertEquals(2, sizeof($fixtures->getFixtures()));
+        $this->assertEquals(3, sizeof($fixtures->getFixtures()));
     }
 
     public function testDown()
@@ -48,17 +49,18 @@ class FixturesTest extends PHPUnit_Framework_TestCase
 
         DB::shouldReceive('table')->with('cities')->once()->andReturn($queryBuilder);
         DB::shouldReceive('table')->with('users')->once()->andReturn($queryBuilder);
+        DB::shouldReceive('table')->with('countries')->once()->andReturn($queryBuilder);
 
         $fixtures = new \Mayconbordin\L5Fixtures\Fixtures(['location' => __DIR__ . '/_data']);
 
         $fixtures->down();
 
-        $this->assertEquals(2, sizeof($fixtures->getFixtures()));
+        $this->assertEquals(3, sizeof($fixtures->getFixtures()));
     }
 
     public function testGetFixtures()
     {
         $fixtures = new \Mayconbordin\L5Fixtures\Fixtures(['location' => __DIR__ . '/_data']);
-        $this->assertEquals(2, sizeof($fixtures->getFixtures()));
+        $this->assertEquals(3, sizeof($fixtures->getFixtures()));
     }
 }
