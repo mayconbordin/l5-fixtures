@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/mayconbordin/l5-fixtures.svg?branch=master)](https://travis-ci.org/mayconbordin/l5-fixtures)
 
-JSON and CSV fixtures package for Laravel 5.
+Fixtures package for Laravel 5 with support for JSON, CSV, YAML and PHP files.
 
 If you are seeding your database with fake data that can be easily generated, consider using the [Model Factories](http://laravel.com/docs/5.1/seeding#using-model-factories).
 
-But if you need to load data from a JSON or CSV file then this is your best choice.
+But if you need to load data that can't be generated then this is your best choice.
 
 ## Installation
 
@@ -39,7 +39,7 @@ file will be created in your `app/config` directory.
 
 ## Usage
 
-By default the fixtures directory is `/fixtures`, inside it you should place JSON and/or CSV files with data to fill
+By default the fixtures directory is `/fixtures`, inside it you should place the data files that will fill
 the database. The name of the file should be exactly the same as the name of the database. Take a look at the two examples
 in the [`/tests_data`](https://github.com/mayconbordin/l5-fixtures/tree/master/tests/_data) directory.
 
@@ -70,6 +70,51 @@ If you haven't published the configuration file or you want to load fixtures fro
 Fixtures::setUp('/path/to/fixtures');
 ```
 
-## TODO
+## Data Format
 
- - Add support for YAML, XML and PHP arrays.
+The fixtures files are parsed in order to create an array of records that are themselves associative arrays. The resulting array is then inserted in the database using the [insert](http://laravel.com/docs/5.1/queries#inserts) method of the query builder.
+
+Relations are not handled by the library, but you can make reference to other records by their IDs, even if they haven't been inserted yet because the library disables the foreign key checks before inserting the fixtures into the database.
+
+#### JSON
+
+```json
+[
+  {
+    "name": "Owen Sound",
+    "region": "ON",
+    "country": "Sierra Leone"
+  }
+]
+```
+
+#### CSV
+
+The delimiter is detected automatically.
+
+```csv
+name;region;country
+Owen Sound;ON;Sierra Leone
+```
+
+#### YAML
+
+```yaml
+- name: Owen Sound
+  region: ON
+  country: Sierra Leone
+```
+
+#### PHP
+
+```php
+<?php
+
+return [
+    [
+        'name' => 'Owen Sound',
+        'region' => 'ON',
+        'country' => 'Sierra Leone'
+    ]
+];
+```
