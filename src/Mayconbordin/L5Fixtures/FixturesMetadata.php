@@ -64,6 +64,14 @@ class FixturesMetadata
     }
 
     /**
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
      * @return Filesystem
      */
     public function getFilesystem()

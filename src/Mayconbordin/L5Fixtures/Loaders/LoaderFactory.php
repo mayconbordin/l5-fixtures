@@ -8,6 +8,7 @@ class LoaderFactory
     const JSON = "json";
     const CSV  = "csv";
     const YAML = "yaml";
+    const PHP  = "php";
 
     private static $loaders = [];
 
@@ -19,24 +20,49 @@ class LoaderFactory
      * @return Loader
      * @throws UnsupportedFormatException
      */
-    public static function create($format, FixturesMetadata $metadata)
+    public static function create($format, FixturesMetadata $metadata, $cache = true)
     {
+        if ($cache === true && isset(self::$loaders[$format])) {
+            return self::$loaders[$format];
+        }
+
+        $loader = null;
+
         switch ($format)
         {
             case self::JSON:
-                return self::createJsonLoader($metadata);
+                $loader = new JsonLoader();
+                break;
+
             case self::CSV:
-                return self::createCsvLoader($metadata);
+                $loader = new CsvLoader();
+                break;
+
             case self::YAML:
-                return self::createYamlLoader($metadata);
+                $loader = new YamlLoader();
+                break;
+
+            case self::PHP:
+                $loader = new PhpLoader();
+                break;
+
             default:
                 throw new UnsupportedFormatException($format);
+                break;
         }
+
+        $loader->initialize($metadata);
+
+        if ($cache === true) {
+            self::$loaders[$format] = $loader;
+        }
+
+        return $loader;
     }
 
-    public static function createJsonLoader(FixturesMetadata $metadata)
+    /*public static function createJsonLoader(FixturesMetadata $metadata)
     {
-        if (!in_array(self::JSON, self::$loaders)) {
+        if (!isset(self::JSON, self::$loaders)) {
             $loader = new JsonLoader();
             $loader->initialize($metadata);
 
@@ -68,5 +94,5 @@ class LoaderFactory
         }
 
         return self::$loaders[self::YAML];
-    }
+    }*/
 }

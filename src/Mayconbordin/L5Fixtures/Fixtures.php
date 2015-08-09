@@ -91,6 +91,12 @@ class Fixtures
     protected function loadFixture($fixture)
     {
         $rows = LoaderFactory::create($fixture->format, $this->metadata)->load($fixture->path);
+
+        if (!is_array($rows)) {
+            var_dump($fixture);
+            var_dump($rows);
+        }
+
         DB::table($fixture->table)->insert($rows);
     }
 
