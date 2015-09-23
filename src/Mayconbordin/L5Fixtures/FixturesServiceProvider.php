@@ -1,6 +1,8 @@
 <?php namespace Mayconbordin\L5Fixtures;
 
 use Illuminate\Support\ServiceProvider;
+use Mayconbordin\L5Fixtures\Commands\DownCommand;
+use Mayconbordin\L5Fixtures\Commands\UpCommand;
 
 class FixturesServiceProvider extends ServiceProvider
 {
@@ -32,7 +34,7 @@ class FixturesServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerFixtures();
-
+        $this->registerCommands();
         $this->mergeConfig();
     }
 
@@ -48,6 +50,16 @@ class FixturesServiceProvider extends ServiceProvider
         });
 
         $this->app->alias('fixtures', 'Mayconbordin\L5Fixtures\Fixtures');
+    }
+
+    /**
+     * Register the application commands.
+     */
+    private function registerCommands()
+    {
+        $this->commands([
+            UpCommand::class, DownCommand::class
+        ]);
     }
 
     /**
