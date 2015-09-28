@@ -18,7 +18,10 @@ class CsvLoader extends AbstractLoader
     {
         $csv = Reader::createFromString($data);
         $delimiters = $csv->detectDelimiterList(10, ['|']);
-        $csv->setDelimiter(array_values($delimiters)[0]);
+
+        if (sizeof($delimiters) > 0) {
+            $csv->setDelimiter(array_values($delimiters)[0]);
+        }
 
         return $csv;
     }

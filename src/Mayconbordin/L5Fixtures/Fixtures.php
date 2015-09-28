@@ -109,6 +109,9 @@ class Fixtures
         if (is_null($allowed)) {
             $fixtures = $this->metadata->getFixtures();
         } else {
+            if (!is_array($allowed)) {
+                $allowed = [$allowed];
+            }
             $fixtures = array_intersect_key($this->metadata->getFixtures(), array_flip($allowed));
         }
 
