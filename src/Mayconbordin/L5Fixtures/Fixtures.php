@@ -63,14 +63,14 @@ class Fixtures
         $fixtures = $this->getFixtures($allowed);
 
         Model::unguard();
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $this->setForeignKeyChecks(false);
 
         foreach ($fixtures as $fixture)
         {
             DB::table($fixture->table)->truncate();
         }
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        $this->setForeignKeyChecks(true);
     }
 
     protected function loadFixtures($allowed = null)
@@ -78,14 +78,14 @@ class Fixtures
         $fixtures = $this->getFixtures($allowed);
 
         Model::unguard();
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $this->setForeignKeyChecks(false);
 
         foreach ($fixtures as $fixture)
         {
             $this->loadFixture($fixture);
         }
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        $this->setForeignKeyChecks(true);
     }
 
     protected function loadFixture($fixture)
@@ -116,5 +116,20 @@ class Fixtures
         }
 
         return $fixtures;
+    }
+
+    protected function setForeignKeyChecks ( $enable = false )
+    {
+        switch(DB::getDriverName()) {
+            case 'mysql':
+                $status = $enable ? 1 : 0;
+                DB::statement('SET FOREIGN_KEY_CHECKS=' . $status);
+                break;
+
+            case 'sqlite':
+                $status = $enable ? 'ON' : 'OFF';
+                DB::statement('PRAGMA foreign_keys =' . $status );
+                break;
+        }
     }
 }
