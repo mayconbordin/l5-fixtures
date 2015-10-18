@@ -97,7 +97,15 @@ class Fixtures
             var_dump($rows);
         }
 
-        DB::table($fixture->table)->insert($rows);
+
+        $column_count = count ( $rows[0]);
+        $chunk_size = array_get($this->config, 'chunk_size');
+        $rows_per_chunk = (integer) ( $chunk_size / $column_count );
+
+        foreach ( array_chunk ( $rows, $rows_per_chunk) as $chunk )
+        {
+            DB::table($fixture->table)->insert($chunk);
+        }
     }
 
     public function getFixtures($allowed = null)
