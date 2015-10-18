@@ -102,6 +102,15 @@ class Fixtures
         $chunk_size = array_get($this->config, 'chunk_size');
         $rows_per_chunk = (integer) ( $chunk_size / $column_count );
 
+        // Convert the string "null" into null
+        array_walk_recursive( $rows, function( &$item, $key) 
+        {
+            if ( ! is_array ( $item ) and strcasecmp ( $item, "null") == 0 )
+            {
+                $item = null;
+            }
+        });
+
         foreach ( array_chunk ( $rows, $rows_per_chunk) as $chunk )
         {
             DB::table($fixture->table)->insert($chunk);
