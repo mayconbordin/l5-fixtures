@@ -63,14 +63,14 @@ class Fixtures
         $fixtures = $this->getFixtures($allowed);
 
         Model::unguard();
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $this->setForeignKeyChecks(false);
 
         foreach ($fixtures as $fixture)
         {
             DB::table($fixture->table)->truncate();
         }
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        $this->setForeignKeyChecks(true);
     }
 
     protected function loadFixtures($allowed = null)
@@ -78,14 +78,14 @@ class Fixtures
         $fixtures = $this->getFixtures($allowed);
 
         Model::unguard();
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $this->setForeignKeyChecks(false);
 
         foreach ($fixtures as $fixture)
         {
             $this->loadFixture($fixture);
         }
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        $this->setForeignKeyChecks(true);
     }
 
     protected function loadFixture($fixture)
@@ -97,7 +97,24 @@ class Fixtures
             var_dump($rows);
         }
 
-        DB::table($fixture->table)->insert($rows);
+
+        $column_count = count ( $rows[0]);
+        $chunk_size = array_get($this->config, 'chunk_size');
+        $rows_per_chunk = (integer) ( $chunk_size / $column_count );
+
+        // Convert the string "null" into null
+        array_walk_recursive( $rows, function( &$item, $key) 
+        {
+            if ( ! is_array ( $item ) and strcasecmp ( $item, "null") == 0 )
+            {
+                $item = null;
+            }
+        });
+
+        foreach ( array_chunk ( $rows, $rows_per_chunk) as $chunk )
+        {
+            DB::table($fixture->table)->insert($chunk);
+        }
     }
 
     public function getFixtures($allowed = null)
@@ -116,5 +133,20 @@ class Fixtures
         }
 
         return $fixtures;
+    }
+
+    protected function setForeignKeyChecks ( $enable = false )
+    {
+        switch(DB::getDriverName()) {
+            case 'mysql':
+                $status = $enable ? 1 : 0;
+                DB::statement('SET FOREIGN_KEY_CHECKS=' . $status);
+                break;
+
+            case 'sqlite':
+                $status = $enable ? 'ON' : 'OFF';
+                DB::statement('PRAGMA foreign_keys =' . $status );
+                break;
+        }
     }
 }
