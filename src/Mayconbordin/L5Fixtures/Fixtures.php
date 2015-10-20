@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 use Mayconbordin\L5Fixtures\Exceptions\DirectoryNotFoundException;
+use Mayconbordin\L5Fixtures\Exceptions\InvalidDataSchemaException;
 use Mayconbordin\L5Fixtures\Exceptions\NotDirectoryException;
 use Mayconbordin\L5Fixtures\Loaders\LoaderFactory;
 
@@ -93,26 +94,22 @@ class Fixtures
         $rows = LoaderFactory::create($fixture->format, $this->metadata)->load($fixture->path);
 
         if (!is_array($rows)) {
-            var_dump($fixture);
-            var_dump($rows);
+            throw new InvalidDataSchemaException($fixture);
         }
 
-
-        $column_count = count ( $rows[0]);
-        $chunk_size = array_get($this->config, 'chunk_size');
-        $rows_per_chunk = (integer) ( $chunk_size / $column_count );
+        $columnCount  = count($rows[0]);
+        $chunkSize    = array_get($this->config, 'chunk_size', 500);
+        $rowsPerChunk = (integer) ($chunkSize / $columnCount);
 
         // Convert the string "null" into null
-        array_walk_recursive( $rows, function( &$item, $key) 
-        {
-            if ( ! is_array ( $item ) and strcasecmp ( $item, "null") == 0 )
-            {
+        array_walk_recursive($rows, function(&$item, $key) {
+            if (!is_array($item) && strcasecmp($item, "null") == 0) {
                 $item = null;
             }
         });
 
-        foreach ( array_chunk ( $rows, $rows_per_chunk) as $chunk )
-        {
+        // Insert the chunks in the database
+        foreach (array_chunk($rows, $rowsPerChunk) as $chunk) {
             DB::table($fixture->table)->insert($chunk);
         }
     }
@@ -135,17 +132,17 @@ class Fixtures
         return $fixtures;
     }
 
-    protected function setForeignKeyChecks ( $enable = false )
+    protected function setForeignKeyChecks ($enable = false)
     {
         switch(DB::getDriverName()) {
             case 'mysql':
                 $status = $enable ? 1 : 0;
-                DB::statement('SET FOREIGN_KEY_CHECKS=' . $status);
+                DB::statement("SET FOREIGN_KEY_CHECKS=$status;");
                 break;
 
             case 'sqlite':
                 $status = $enable ? 'ON' : 'OFF';
-                DB::statement('PRAGMA foreign_keys =' . $status );
+                DB::statement("PRAGMA foreign_keys = $status");
                 break;
         }
     }

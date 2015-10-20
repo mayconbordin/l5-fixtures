@@ -59,40 +59,4 @@ class LoaderFactory
 
         return $loader;
     }
-
-    /*public static function createJsonLoader(FixturesMetadata $metadata)
-    {
-        if (!isset(self::JSON, self::$loaders)) {
-            $loader = new JsonLoader();
-            $loader->initialize($metadata);
-
-            self::$loaders[self::JSON] = $loader;
-        }
-
-        return self::$loaders[self::JSON];
-    }
-
-    public static function createCsvLoader(FixturesMetadata $metadata)
-    {
-        if (!in_array(self::CSV, self::$loaders)) {
-            $loader = new CsvLoader();
-            $loader->initialize($metadata);
-
-            self::$loaders[self::CSV] = $loader;
-        }
-
-        return self::$loaders[self::CSV];
-    }
-
-    public static function createYamlLoader(FixturesMetadata $metadata)
-    {
-        if (!in_array(self::YAML, self::$loaders)) {
-            $loader = new YamlLoader();
-            $loader->initialize($metadata);
-
-            self::$loaders[self::YAML] = $loader;
-        }
-
-        return self::$loaders[self::YAML];
-    }*/
 }

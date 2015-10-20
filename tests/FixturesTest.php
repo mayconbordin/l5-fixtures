@@ -22,6 +22,7 @@ class FixturesTest extends PHPUnit_Framework_TestCase
         $queryBuilder = m::mock('Illuminate\Database\Query\Builder');
         $queryBuilder->shouldReceive('insert')->with(m::type('array'))->times(4);
 
+        DB::shouldReceive('getDriverName')->andReturn('mysql');
         DB::shouldReceive('statement')->with('SET FOREIGN_KEY_CHECKS=0;')->once();
         DB::shouldReceive('statement')->with('SET FOREIGN_KEY_CHECKS=1;')->once();
 
@@ -42,6 +43,7 @@ class FixturesTest extends PHPUnit_Framework_TestCase
         $queryBuilder = m::mock('Illuminate\Database\Query\Builder');
         $queryBuilder->shouldReceive('insert')->with(m::type('array'))->once();
 
+        DB::shouldReceive('getDriverName')->andReturn('mysql');
         DB::shouldReceive('statement')->with('SET FOREIGN_KEY_CHECKS=0;')->once();
         DB::shouldReceive('statement')->with('SET FOREIGN_KEY_CHECKS=1;')->once();
         DB::shouldReceive('table')->with('users')->once()->andReturn($queryBuilder);
@@ -58,6 +60,7 @@ class FixturesTest extends PHPUnit_Framework_TestCase
         $queryBuilder = m::mock('Illuminate\Database\Query\Builder');
         $queryBuilder->shouldReceive('truncate')->times(4);
 
+        DB::shouldReceive('getDriverName')->andReturn('mysql');
         DB::shouldReceive('statement')->with('SET FOREIGN_KEY_CHECKS=0;')->once();
         DB::shouldReceive('statement')->with('SET FOREIGN_KEY_CHECKS=1;')->once();
 

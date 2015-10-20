@@ -10,6 +10,6 @@ class UnsupportedFormatException extends FixturesException
      */
     public function __construct($format)
     {
-        parent::__construct("Format '$format' is not supported. Supported formats are: JSON and CSV.");
+        parent::__construct("Format '$format' is not supported. Supported formats are: JSON, CSV, YAML and PHP.");
     }
 }

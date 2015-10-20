@@ -12,7 +12,7 @@ class CsvLoader extends AbstractLoader
 
     /**
      * @param string $data
-     * @return static
+     * @return Reader
      */
     protected function getReader($data)
     {
