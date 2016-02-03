@@ -7,7 +7,7 @@ class CsvLoader extends AbstractLoader
     public function load($path)
     {
         $data = $this->metadata->getFilesystem()->read($path);
-        return $this->getReader($data)->fetchAssoc();
+        return iterator_to_array($this->getReader($data)->fetchAssoc(), false);
     }
 
     /**
@@ -17,8 +17,8 @@ class CsvLoader extends AbstractLoader
     protected function getReader($data)
     {
         $csv = Reader::createFromString($data);
-        $delimiters = $csv->detectDelimiterList(10, ['|']);
-        
+        $delimiters = $csv->fetchDelimitersOccurrence([' ', '|', ',', ';'], 10);
+
         if (sizeof($delimiters) > 0) {
             $csv->setDelimiter(array_keys($delimiters)[0]);
         }
