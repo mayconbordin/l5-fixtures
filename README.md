@@ -1,6 +1,6 @@
 # l5-fixtures
 
-[![Build Status](https://travis-ci.org/mayconbordin/l5-fixtures.svg?branch=master)](https://travis-ci.org/mayconbordin/l5-fixtures)
+[![Build Status](https://travis-ci.org/mayconbordin/l5-fixtures.svg?branch=master)](https://travis-ci.org/mayconbordin/l5-fixtures) [![Latest Stable Version](https://poser.pugx.org/mayconbordin/l5-fixtures/v/stable)](https://packagist.org/packages/mayconbordin/l5-fixtures) [![Total Downloads](https://poser.pugx.org/mayconbordin/l5-fixtures/downloads)](https://packagist.org/packages/mayconbordin/l5-fixtures) [![Latest Unstable Version](https://poser.pugx.org/mayconbordin/l5-fixtures/v/unstable)](https://packagist.org/packages/mayconbordin/l5-fixtures) [![License](https://poser.pugx.org/mayconbordin/l5-fixtures/license)](https://packagist.org/packages/mayconbordin/l5-fixtures)
 
 Fixtures package for Laravel 5 with support for JSON, CSV, YAML and PHP files.
 
