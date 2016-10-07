@@ -40,7 +40,7 @@ file will be created in your `app/config` directory.
 ## Usage
 
 By default the fixtures directory is `/fixtures`, inside it you should place the data files that will fill
-the database. The name of the file should be exactly the same as the name of the database. Take a look at the two examples
+the database. The name of the file should be exactly the same as the name of the database table (e.g.: 'table_one.json'). Take a look at the two examples
 in the [`/tests_data`](https://github.com/mayconbordin/l5-fixtures/tree/master/tests/_data) directory.
 
 To apply all fixtures to the database run
