@@ -17,7 +17,7 @@
         "illuminate/database": "5.x",
         "illuminate/console": "5.x",
         "league/csv": "~8.0.0",
-        "symfony/yaml": "~2.8.2",
+        "symfony/yaml": ">=2.8.2",
         "league/flysystem": "~1.0.16"
     },
     "require-dev": {

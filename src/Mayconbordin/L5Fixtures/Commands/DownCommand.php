@@ -15,7 +15,7 @@ class DownCommand extends Command
      *
      * @var string
      */
-    protected $name = 'fixtures:down';
+    protected $signature = 'fixtures:down {--database=}';
 
     /**
      * The console command description.
@@ -29,7 +29,7 @@ class DownCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $database = $this->option('database');
 
@@ -38,27 +38,5 @@ class DownCommand extends Command
         }
 
         Fixtures::down();
-    }
-
-    /**
-     * Get the console command arguments.
-     *
-     * @return array
-     */
-    protected function getArguments()
-    {
-        return [];
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            ['database', null, InputOption::VALUE_OPTIONAL, 'The name of the database connection.', null]
-        ];
     }
 }
