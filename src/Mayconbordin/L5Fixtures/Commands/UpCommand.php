@@ -15,7 +15,7 @@ class UpCommand extends Command
      *
      * @var string
      */
-    protected $name = 'fixtures:up';
+    protected $signature = 'fixtures:up {--fixtures=} {--dir=} {--database=}';
 
     /**
      * The console command description.
@@ -29,11 +29,11 @@ class UpCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $database = $this->option('database');
         $dir      = $this->option('dir');
-        $fixtures = $this->argument('fixtures');
+        $fixtures = $this->option('fixtures');
 
         if ($database != null) {
             DB::setDefaultConnection($database);
@@ -50,30 +50,5 @@ class UpCommand extends Command
         } else {
             throw new FixturesException('List of fixtures should be an array.');
         }
-    }
-
-    /**
-     * Get the console command arguments.
-     *
-     * @return array
-     */
-    protected function getArguments()
-    {
-        return [
-            ['fixtures', InputArgument::IS_ARRAY, 'List of fixture names to be applied.', null],
-        ];
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            ['database', null, InputOption::VALUE_OPTIONAL, 'The name of the database connection.', null],
-            ['dir', null, InputOption::VALUE_OPTIONAL, 'The path to the fixtures.', null],
-        ];
     }
 }
