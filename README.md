@@ -32,6 +32,8 @@ in the `providers` array and
 
 to the `aliases` array.
 
+If you are using Laravel 5.5, package will be automatically discovered, no need to edit `config/app.php`
+
 ## Configuration
 
 To publish the configuration for this package execute `php artisan vendor:publish` and a `fixtures.php` 

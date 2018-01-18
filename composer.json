@@ -29,5 +29,15 @@
             "Mayconbordin\\L5Fixtures\\": "src/Mayconbordin/L5Fixtures/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mayconbordin\\L5Fixtures\\FixturesServiceProvider"
+            ],
+            "aliases": {
+                "Fixtures": "Mayconbordin\\L5Fixtures\\FixturesFacade"
+            }
+        }
+    },
     "minimum-stability": "dev"
 }
