@@ -66,9 +66,11 @@ class Fixtures
         Model::unguard();
         $this->setForeignKeyChecks(false);
 
+        $command = $this->truncateCommand();
+
         foreach ($fixtures as $fixture)
         {
-            DB::table($fixture->table)->truncate();
+            DB::table($fixture->table)->$command();
         }
 
         $this->setForeignKeyChecks(true);
@@ -144,6 +146,22 @@ class Fixtures
                 $status = $enable ? 'ON' : 'OFF';
                 DB::statement("PRAGMA foreign_keys = $status");
                 break;
+
+            case 'pgsql':
+                $status = $enable ? 'DEFAULT' : 'replica';
+                DB::statement("SET session_replication_role = $status");
+                break;
+        }
+    }
+
+    protected function truncateCommand ()
+    {
+        switch(DB::getDriverName()) {
+            case 'pgsql':
+                return 'delete';
+
+            default:
+                return 'truncate';
         }
     }
 }
